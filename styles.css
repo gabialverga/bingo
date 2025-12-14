@@ -102,3 +102,18 @@ button.export {
 @media (max-width: 600px) {
   td { height: 60px; font-size: 12px; }
 }
+
+#generate-btn {
+  display: block;
+  margin: 0 auto 16px;
+  padding: 10px 20px;
+  background: #2196F3;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#generate-btn:hover {
+  background: #1976D2;
+}

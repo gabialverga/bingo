@@ -100,6 +100,16 @@ function normalizeSelections() {
   if (selections.length < 24) selections = selections.concat(Array(24 - selections.length).fill(''));
 }
 
+function generateRandomCard() {
+  const shuffled = [...palavras].sort(() => Math.random() - 0.5);
+  for (let i = 0; i < 24; i++) {
+    selections[i] = shuffled[i] || '';
+  }
+  saveState();
+  renderConfig();
+  renderPlay();
+}
+
 function getAvailableWords(index) {
   const sIdx = gridToSelIndex(index);
   return palavras.filter(p => !selections.includes(p) || selections[sIdx] === p);
@@ -288,6 +298,9 @@ document.querySelectorAll('.tabs button').forEach(btn => {
   // wire export button click to exportImage
   const exportBtn = document.getElementById('export-btn');
   if (exportBtn) exportBtn.onclick = exportImage;
+  // wire generate button
+  const generateBtn = document.getElementById('generate-btn');
+  if (generateBtn) generateBtn.onclick = generateRandomCard;
   // if words changed, show temporary notice
   if (wordsChanged) {
     const statusEl = document.getElementById('config-status');
