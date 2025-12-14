@@ -1,0 +1,104 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 16px;
+  background: #f4f4f4;
+}
+h1 { text-align: center; }
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+  gap: 8px;
+}
+
+.tabs button {
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  background: #ddd;
+}
+
+.tabs button.active {
+  background: #4caf50;
+  color: #fff;
+}
+
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+/* make play grid cells show clickable cursor */
+.tab-content#play td { cursor: pointer; }
+
+.bingo-title {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  letter-spacing: 6px;
+}
+
+thead th {
+  background: #eee;
+  border: 1px solid #999;
+  padding: 6px 4px;
+  text-align: center;
+}
+
+.bingo-container {
+  max-width: 600px;
+  margin: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+td {
+  border: 1px solid #999;
+  padding: 4px;
+  text-align: center;
+  vertical-align: middle;
+  height: 70px;
+  position: relative;
+  background: #fff;
+  width: 20%;
+}
+
+td.marked {
+  background: #a5d6a7;
+}
+
+select {
+  width: 100%;
+}
+
+
+
+.actions {
+  text-align: center;
+  margin-top: 16px;
+}
+
+.actions-status {
+  text-align: center;
+  margin-top: 8px;
+  color: #666;
+}
+
+button.export {
+  padding: 10px 16px;
+  background: #2196f3;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  td { height: 60px; font-size: 12px; }
+}

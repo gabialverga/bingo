@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cartela de Bingo</title>
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Cartela de Bingo</h1>
+
+  <div class="tabs">
+    <button id="tab-config-btn" class="active" data-tab="config">Gerar Cartela</button>
+    <button id="tab-play-btn" data-tab="play">Marcar Bingo</button>
+  </div>
+
+  <div id="config" class="tab-content active">
+    <div class="bingo-container" id="bingo-config"></div>
+    <div id="config-status" style="text-align:center;margin-top:8px;color:#666"></div>
+  </div>
+
+  <div id="play" class="tab-content">
+    <div class="bingo-title">BINGO</div>
+    <div class="bingo-container" id="bingo-play"></div>
+    <div class="actions" id="play-actions" style="display:none;">
+      <button class="export" id="export-btn">Exportar como imagem</button>
+    </div>
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>
