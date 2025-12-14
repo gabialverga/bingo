@@ -19,26 +19,31 @@ async function loadWords() {
       console.error('words.json parse error', e);
       parsed = [];
     }
-  // Compare with stored words JSON if available, otherwise compare hashes
-  try {
-    const prevJson = localStorage.getItem('bingo-words-json');
-    const newHash = hashString(jsonText);
-    const prevHash = localStorage.getItem('bingo-words-hash');
-    if ((prevJson && prevJson !== jsonText) || (!prevJson && prevHash && prevHash !== newHash)) {
-      // words changed -> remove saved cartela and mark changed
-      localStorage.removeItem(STORAGE_KEY);
-      selections = Array(24).fill('');
-      saveState();
-      wordsChanged = true;
+    // Compare with stored words JSON if available, otherwise compare hashes
+    try {
+      const prevJson = localStorage.getItem('bingo-words-json');
+      const newHash = hashString(jsonText);
+      const prevHash = localStorage.getItem('bingo-words-hash');
+      if ((prevJson && prevJson !== jsonText) || (!prevJson && prevHash && prevHash !== newHash)) {
+        // words changed -> remove saved cartela and mark changed
+        localStorage.removeItem(STORAGE_KEY);
+        selections = Array(24).fill('');
+        saveState();
+        wordsChanged = true;
+      }
+      // store current words content and hash for future comparisons
+      localStorage.setItem('bingo-words-json', jsonText);
+      localStorage.setItem('bingo-words-hash', newHash);
+    } catch (e) {
+      console.warn('Could not compare/store words.json', e);
     }
-    // store current words content and hash for future comparisons
-    localStorage.setItem('bingo-words-json', jsonText);
-    localStorage.setItem('bingo-words-hash', newHash);
-  } catch (e) {
-    console.warn('Could not compare/store words.json', e);
-  }
 
-  palavras = parsed;
+    palavras = parsed;
+    console.log('Palavras loaded:', palavras.length);
+  } catch (e) {
+    console.error('Error loading words:', e);
+    palavras = [];
+  }
 }
 
 function hashString(str) {
