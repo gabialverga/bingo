@@ -8,15 +8,17 @@ function gridToSelIndex(i) {
 }
 
 async function loadWords() {
-  const res = await fetch('words.json');
-  const jsonText = await res.text();
-  let parsed = [];
   try {
-    parsed = JSON.parse(jsonText);
-  } catch (e) {
-    console.error('words.json parse error', e);
-    parsed = [];
-  }
+    const res = await fetch('words.json');
+    console.log('Fetch status:', res.status);
+    const jsonText = await res.text();
+    let parsed = [];
+    try {
+      parsed = JSON.parse(jsonText);
+    } catch (e) {
+      console.error('words.json parse error', e);
+      parsed = [];
+    }
   // Compare with stored words JSON if available, otherwise compare hashes
   try {
     const prevJson = localStorage.getItem('bingo-words-json');
