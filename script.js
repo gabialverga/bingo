@@ -101,6 +101,7 @@ function normalizeSelections() {
 }
 
 function generateRandomCard() {
+  console.log('Generating random card');
   const shuffled = [...palavras].sort(() => Math.random() - 0.5);
   for (let i = 0; i < 24; i++) {
     selections[i] = shuffled[i] || '';
